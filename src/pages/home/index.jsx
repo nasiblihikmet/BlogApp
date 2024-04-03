@@ -1,9 +1,11 @@
 import React from "react";
 import { Box, Text } from "@chakra-ui/react";
+import Header from "../../components/Header";
 
 function HomePage() {
   return (
     <div>
+      <Header />
       {/* <Box w="100%" h="200px" bgGradient="linear(to-t, green.200, pink.500)" />
       <Box
         w="100%"
