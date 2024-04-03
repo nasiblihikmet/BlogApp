@@ -17,7 +17,7 @@ function HomePage() {
         fontSize="6xl"
         fontWeight="extrabold"
       >
-        Home
+       About
       </Text>
     </div>
   );

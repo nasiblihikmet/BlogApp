@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Text } from "@chakra-ui/react";
 
-function HomePage() {
+function ArticleCreatePage() {
   return (
     <div>
       {/* <Box w="100%" h="200px" bgGradient="linear(to-t, green.200, pink.500)" />
@@ -17,10 +17,10 @@ function HomePage() {
         fontSize="6xl"
         fontWeight="extrabold"
       >
-        Home
+       ArticleCreatePage
       </Text>
     </div>
   );
 }
 
-export default HomePage;
+export default ArticleCreatePage;
