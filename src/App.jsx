@@ -1,6 +1,7 @@
 import { Suspense, lazy } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route,  Routes } from "react-router-dom";
 import { Spinner } from "@chakra-ui/react";
+import { ROUTER } from "./constant/router";
 
 const Home = lazy(() => import("./pages/home"));
 const About = lazy(() => import("./pages/about"));
@@ -23,13 +24,13 @@ function App() {
       }
     >
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
+        <Route path={ROUTER.HOME} element={<Home />} />
+        <Route path={ROUTER.ABOUT} element={<About />} />
         {/* <Route path="/faq" element={<HomePage />} />
         <Route path="/favourites" element={<HomePage />} /> */}
-        <Route path="/articles" element={<Articles />} />
-        <Route path="/create-article" element={<ArticleCreate />} />
-        <Route path="/articles/:id" element={<ArticleDetail />} />
+        <Route path={ROUTER.ARTICLES} element={<Articles />} />
+        <Route path={ROUTER.ARTICLE_CREATE} element={<ArticleCreate />} />
+        <Route path={ROUTER.ARTICLES + "/+id"} element={<ArticleDetail />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
