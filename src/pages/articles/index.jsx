@@ -5,6 +5,9 @@ import BlogCard from "../../components/BlogCard";
 import NavigationShow from "../../components/NavigationShow";
 
 function ArticlesPage() {
+
+
+    
   return (
     <>
       <Header />
@@ -12,7 +15,6 @@ function ArticlesPage() {
         <NavigationShow />
         <Input placeholder="Search" />
       </Box>
-
       <SimpleGrid columns={{ sm: 2 }} p="20" spacing="10">
         <BlogCard />
         <BlogCard />
