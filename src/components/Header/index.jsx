@@ -1,11 +1,10 @@
 import { Box, Button, Stack, Text } from "@chakra-ui/react";
 import React from "react";
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import { ROUTER } from "../../constant/router";
 
 function Header() {
-
-     const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <Box
       height="100px"
@@ -15,23 +14,46 @@ function Header() {
       justifyContent="space-between"
       backgroundColor="teal"
     >
-      <Text>Blog</Text>
-    
-      <Stack direction="row" spacing={4} align="center">
-        <Button variant="ghost" color="white" onClick={()=>navigate(ROUTER.HOME)}>
-         Home
+      <Text as="h1"
+      fontSize="4xl"
+      color="white"
+      >Blog</Text>
+
+      <Stack direction="row" spacing={4} align="center" as="ul">
+        <Button
+          variant="ghost"
+          color="white"
+          as="li"
+          onClick={() => navigate(ROUTER.HOME)}
+        >
+          Home
         </Button>
-        <Button variant="ghost" color="white">
+        <Button
+          variant="ghost"
+          color="white"
+          as="li"
+          onClick={() => navigate(ROUTER.ARTICLES)}
+        >
           Articles
         </Button>
-        <Button variant="ghost" color="white" onClick={()=>navigate(ROUTER.ABOUT)}>
+        <Button
+          variant="ghost"
+          color="white"
+          as="li"
+          onClick={() => navigate(ROUTER.ABOUT)}
+        >
           About
         </Button>
-        <Button variant="ghost" color="white">
+        <Button
+          variant="ghost"
+          color="white"
+          as="li"
+          onClick={() => navigate(ROUTER.FAQ)}
+        >
           FAQ
         </Button>
-        <Button >
-         Create your article
+        <Button onClick={() => navigate(ROUTER.ARTICLE_CREATE)}  as="li">
+          Create your article
         </Button>
       </Stack>
     </Box>
