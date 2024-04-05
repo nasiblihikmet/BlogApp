@@ -1,20 +1,22 @@
 import React from "react";
 import { Box, Button, Image, SimpleGrid, Text } from "@chakra-ui/react";
 import Header from "../../components/Header";
+import { useNavigate } from "react-router-dom";
+import { ROUTER } from "../../constant/router";
 
 function HomePage() {
+  const  navigate  = useNavigate();
   return (
-    <div>
+    <>
       <Header />
-      {/* <Box w="100%" h="200px" bgGradient="linear(to-t, green.200, pink.500)" />
-      <Box
-        w="100%"
-        h="200px"
-        bgGradient="radial(gray.300, yellow.400, pink.200)"
-      /> */}
 
       <SimpleGrid bg="gray.50" columns={{ sm: 2 }} spacing="2" p="10">
-        <Box>
+        <Box
+          display="flex"
+          flexDirection="column"
+          justifyContent="flex-start"
+          gap="16px"
+        >
           <Text
             bgClip="text"
             fontSize="6xl"
@@ -31,13 +33,20 @@ function HomePage() {
             ipsum dolor, nulla fuga commodi?
           </Text>
 
-          <Button>Get started</Button>
+          <Button
+            size="lg"
+            colorScheme="teal"
+            alignSelf="flex-start"
+            onClick={() => navigate(ROUTER.ARTICLE_CREATE)}
+          >
+            Get started
+          </Button>
         </Box>
         <Box>
           <Image src="https://cdni.iconscout.com/illustration/premium/thumb/blog-writer-working-on-article-5691583-4759515.png" />
         </Box>
       </SimpleGrid>
-    </div>
+    </>
   );
 }
 
