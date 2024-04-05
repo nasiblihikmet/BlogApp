@@ -1,25 +1,23 @@
 import React from "react";
-import { Box, Text } from "@chakra-ui/react";
+import { SimpleGrid, Text } from "@chakra-ui/react";
+import Header from "../../components/Header";
+import BlogCard from "../../components/BlogCard";
 
 function ArticlesPage() {
   return (
-    <div>
-      {/* <Box w="100%" h="200px" bgGradient="linear(to-t, green.200, pink.500)" />
-      <Box
-        w="100%"
-        h="200px"
-        bgGradient="radial(gray.300, yellow.400, pink.200)"
-      /> */}
+    <>
+      <Header />
+      <SimpleGrid columns={{ sm: 2 }} spacing="10">
+       <BlogCard/>
+       <BlogCard/>
+       <BlogCard/>
+       <BlogCard/>
+       <BlogCard/>
+       <BlogCard/>
 
-      <Text
-        bgGradient="linear(to-l, #7928CA, #FF0080)"
-        bgClip="text"
-        fontSize="6xl"
-        fontWeight="extrabold"
-      >
-       ArticlesPage
-      </Text>
-    </div>
+
+      </SimpleGrid>
+    </>
   );
 }
 
