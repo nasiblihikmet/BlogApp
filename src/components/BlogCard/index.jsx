@@ -35,8 +35,8 @@ function BlogCard() {
         </CardBody>
 
         <CardFooter>
-          <Button variant="solid" colorScheme="blue">
-            Buy Latte
+          <Button variant="solid" colorScheme="teal">
+            Read More
           </Button>
         </CardFooter>
       </Stack>
