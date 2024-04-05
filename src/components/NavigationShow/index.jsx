@@ -18,8 +18,6 @@ function NavigationShow() {
       <BreadcrumbItem>
         <BreadcrumbLink href="#">News</BreadcrumbLink>
       </BreadcrumbItem>
-
-      
     </Breadcrumb>
   );
 }
