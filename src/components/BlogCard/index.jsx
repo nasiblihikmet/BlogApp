@@ -11,7 +11,7 @@ import {
 import React from "react";
 
 
-function BlogCard({ title, cover_url,desc, onReadMore }) { //? api dan gelen melumatlar
+function BlogCard({ title, cover_url,desc, onReadMore }) { //?api dan gelen melumatlar
   
 
   return (
