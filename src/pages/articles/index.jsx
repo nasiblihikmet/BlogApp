@@ -26,6 +26,8 @@ function ArticlesPage() {
     fetchData();
   }, []);
 
+  console.log("data", data);
+
   return (
     <>
       <Header />
@@ -34,15 +36,19 @@ function ArticlesPage() {
         <Input placeholder="Search" />
       </Box>
       {loading ? (
-        <Spinner size="lg" />
+        <Box display="flex" justifyContent="center" p={50}>
+          <Spinner size="lg" />
+        </Box>
       ) : (
         <SimpleGrid columns={{ sm: 2 }} p="20" spacing="10">
-          <BlogCard />
-          <BlogCard />
-          <BlogCard />
-          <BlogCard />
-          <BlogCard />
-          <BlogCard />
+          {data
+            ?.filter((item, index) => index > 99)
+            ?.map(( item ) => (
+              <BlogCard key={"blog-id" + item.id} {...item} />
+            ))}
+
+          {/* <BlogCard />
+          <BlogCard /> */}
         </SimpleGrid>
       )}
     </>

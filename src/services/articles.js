@@ -1,7 +1,7 @@
 import { instanceAxios } from "../helpers/instanceAxios";
 
 export const getBlogs = async () => {
-  //   const response = await instanceAxios.get("posts");
+  //   const response = await instanceAxios.get("posts"); //? belede yazmaq olar
   const response = await instanceAxios({ method: "GET", url: "posts" });
   return response;  //? everything okay
 };
