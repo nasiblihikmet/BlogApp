@@ -25,8 +25,7 @@ function ArticlesPage() {
 
     fetchData();
 
-    // (async function(){
-    // })()
+    
   }, []);
 
   return (
