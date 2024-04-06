@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Input, SimpleGrid } from "@chakra-ui/react";
+import { Box, Input, SimpleGrid, Spinner } from "@chakra-ui/react";
 import Header from "../../components/Header";
 import BlogCard from "../../components/BlogCard";
 import NavigationShow from "../../components/NavigationShow";
@@ -14,8 +14,8 @@ function ArticlesPage() {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await getBlogs();
-        setData(res.data);
+        const res = await getBlogs(); //? everything okay
+        setData(res.data); //? everything okay
       } catch (err) {
         setError(err);
       } finally {
@@ -24,8 +24,6 @@ function ArticlesPage() {
     };
 
     fetchData();
-
-    
   }, []);
 
   return (
@@ -35,14 +33,18 @@ function ArticlesPage() {
         <NavigationShow />
         <Input placeholder="Search" />
       </Box>
-      <SimpleGrid columns={{ sm: 2 }} p="20" spacing="10">
-        <BlogCard />
-        <BlogCard />
-        <BlogCard />
-        <BlogCard />
-        <BlogCard />
-        <BlogCard />
-      </SimpleGrid>
+      {loading ? (
+        <Spinner size="lg" />
+      ) : (
+        <SimpleGrid columns={{ sm: 2 }} p="20" spacing="10">
+          <BlogCard />
+          <BlogCard />
+          <BlogCard />
+          <BlogCard />
+          <BlogCard />
+          <BlogCard />
+        </SimpleGrid>
+      )}
     </>
   );
 }
