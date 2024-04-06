@@ -7,14 +7,14 @@ import { getBlogs } from "../../services/articles";
 import { useNavigate } from "react-router-dom";
 
 function ArticlesPage() {
+
+  const navigate = useNavigate();
+  
   const [data, setData] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
 
-
-
-  const navigate = useNavigate()
-
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,8 +49,12 @@ function ArticlesPage() {
         <SimpleGrid columns={{ sm: 2 }} p="20" spacing="10">
           {data
             ?.filter((item, index) => index > 99)
-            ?.map(( item ) => (
-              <BlogCard key={"blog-id" + item.id} {...item} onReadMore={()=>navigate("/articles/" + item.id)}/>
+            ?.map((item) => (
+              <BlogCard
+                key={"blog-id" + item.id}
+                {...item}
+                onReadMore={() => navigate("/articles/" + item.id)}
+              />
             ))}
 
           {/* <BlogCard />
