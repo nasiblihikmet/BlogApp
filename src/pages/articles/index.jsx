@@ -4,11 +4,17 @@ import Header from "../../components/Header";
 import BlogCard from "../../components/BlogCard";
 import NavigationShow from "../../components/NavigationShow";
 import { getBlogs } from "../../services/articles";
+import { useNavigate } from "react-router-dom";
 
 function ArticlesPage() {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
+
+
+
+  const navigate = useNavigate()
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,7 +50,7 @@ function ArticlesPage() {
           {data
             ?.filter((item, index) => index > 99)
             ?.map(( item ) => (
-              <BlogCard key={"blog-id" + item.id} {...item} />
+              <BlogCard key={"blog-id" + item.id} {...item} onReadMore={()=>navigate("/articles/" + item.id)}/>
             ))}
 
           {/* <BlogCard />
