@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Text } from "@chakra-ui/react";
 
-function HomePage() {
+function AboutPage() {
   return (
     <div>
       {/* <Box w="100%" h="200px" bgGradient="linear(to-t, green.200, pink.500)" />
@@ -23,4 +23,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default AboutPage;
