@@ -11,9 +11,11 @@ function ArticlesPage() {
   const navigate = useNavigate();
 
   const { data, loading } = useFetchData({
-    requestFn: () => getBlogs(),
+    requestFn: () => getBlogs(), //? bu custom hook api ucun set , loading ,data verir hamisini
   });
 
+
+  //? bu kodlarin evezine custom hook yaratdim ve yuxarida cagirdim
   // const [data, setData] = useState();
   // const [loading, setLoading] = useState(false);
   // const [error, setError] = useState();
