@@ -5,32 +5,34 @@ import BlogCard from "../../components/BlogCard";
 import NavigationShow from "../../components/NavigationShow";
 import { getBlogs } from "../../services/articles";
 import { useNavigate } from "react-router-dom";
+import { useFetchData } from "../../hooks/useFetchData";
 
 function ArticlesPage() {
-
-  const navigate = useNavigate();
-  
-  const [data, setData] = useState();
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState();
-
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const res = await getBlogs(); //? everything okay
-        setData(res.data); //? everything okay
-      } catch (err) {
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const { data, loading } = useFetchData({
+    requestFn: () => getBlogs(),
+  });
 
-    fetchData();
-  }, []);
+  // const [data, setData] = useState();
+  // const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState();
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     setLoading(true);
+  //     try {
+  //       const res = await getBlogs(); //? everything okay
+  //       setData(res.data); //? everything okay
+  //     } catch (err) {
+  //       setError(err);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
 
   console.log("data", data);
 
