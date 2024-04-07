@@ -5,6 +5,7 @@ import { Box, Image, SimpleGrid, Text } from "@chakra-ui/react";
 import { useFetchData } from "../../../hooks/useFetchData";
 import { getBlogId } from "../../../services/articles";
 import Loading from "../../../components/Loading";
+import { convertTime } from "../../../utils/convertTime";
 
 function ArticleDetailPage() {
   const { id } = useParams();
@@ -33,7 +34,8 @@ function ArticleDetailPage() {
             gap="16px"
           >
             <Text bgClip="text" fontSize="md" fontWeight="medium" color="gray">
-              12 mart 2024
+             {convertTime(parseInt(data?.created))}
+
             </Text>
             <Text
               bgClip="text"
