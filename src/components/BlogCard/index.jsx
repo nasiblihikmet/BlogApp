@@ -9,6 +9,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import React from "react";
+import { shortText } from "../../utils/shortText";
 
 
 function BlogCard({ title, cover_url,desc, onReadMore }) { //?api dan gelen melumatlar
@@ -31,7 +32,7 @@ function BlogCard({ title, cover_url,desc, onReadMore }) { //?api dan gelen melu
         <CardBody>
           <Heading size="md">{title}</Heading>
 
-          <Text py="2">{desc}</Text>
+          <Text py="2">{shortText(desc,80)}</Text>
         </CardBody>
 
         <CardFooter>

@@ -6,6 +6,7 @@ import NavigationShow from "../../components/NavigationShow";
 import { getBlogs } from "../../services/articles";
 import { useNavigate } from "react-router-dom";
 import { useFetchData } from "../../hooks/useFetchData";
+import Loading from "../../components/Loading";
 
 function ArticlesPage() {
   const navigate = useNavigate();
@@ -46,9 +47,7 @@ function ArticlesPage() {
         <Input placeholder="Search" />
       </Box>
       {loading ? (
-        <Box display="flex" justifyContent="center" p={50}>
-          <Spinner size="lg" />
-        </Box>
+        <Loading/>
       ) : (
         <SimpleGrid columns={{ sm: 2 }} p="20" spacing="10">
           {data
