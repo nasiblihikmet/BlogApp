@@ -10,7 +10,8 @@ function ArticleDetailPage() {
   console.log("a", id);
 
   const a = useFetchData({
-    requestFn: () => getBlogId,
+    requestFn: () => getBlogId(id),
+    dependecy: [id],
   });
 
   return (
