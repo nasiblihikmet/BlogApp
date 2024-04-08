@@ -50,7 +50,7 @@ function ArticlesPage() {
       item.title.toLowerCase().includes(text.toLowerCase())
     );
     setSearchData(filterData);
-    console.log("text", text);
+    console.log("filterData", filterData);
   };
 
   return (
@@ -65,7 +65,7 @@ function ArticlesPage() {
       ) : (
         <SimpleGrid columns={{ sm: 2 }} p="20" spacing="10">
           {data
-            ?.filter((item, index) => index > 99)
+            ?.filter((item, index) => item.id > 100)
             ?.map((item) => (
               <BlogCard
                 key={"blog-id" + item.id}
