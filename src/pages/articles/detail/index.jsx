@@ -34,8 +34,7 @@ function ArticleDetailPage() {
             gap="16px"
           >
             <Text bgClip="text" fontSize="md" fontWeight="medium" color="gray">
-             {convertTime(parseInt(data?.created))}
-
+              {convertTime(parseInt(data?.created))}
             </Text>
             <Text
               bgClip="text"
