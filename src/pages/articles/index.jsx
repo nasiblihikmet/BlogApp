@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Input, SimpleGrid, Spinner } from "@chakra-ui/react";
+import { Box, Input, SimpleGrid, Spinner, Button } from "@chakra-ui/react";
 import Header from "../../components/Header";
 import BlogCard from "../../components/BlogCard";
 import NavigationShow from "../../components/NavigationShow";
@@ -15,6 +15,7 @@ function ArticlesPage() {
     requestFn: () => getBlogs(), //? bu custom hook api ucun set , loading ,data verir hamisini
   });
 
+  const [search, setSearch] = useState("");
 
   //? bu kodlarin evezine custom hook yaratdim ve yuxarida cagirdim
   // const [data, setData] = useState();
@@ -42,12 +43,12 @@ function ArticlesPage() {
   return (
     <>
       <Header />
-      <Box p={10}>
+      <Box px={50}>
         <NavigationShow />
-        <Input placeholder="Search" />
+       
       </Box>
       {loading ? (
-        <Loading/>
+        <Loading />
       ) : (
         <SimpleGrid columns={{ sm: 2 }} p="20" spacing="10">
           {data
