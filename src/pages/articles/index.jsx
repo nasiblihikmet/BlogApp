@@ -7,6 +7,7 @@ import { getBlogs } from "../../services/articles";
 import { useNavigate } from "react-router-dom";
 import { useFetchData } from "../../hooks/useFetchData";
 import Loading from "../../components/Loading";
+import SearchBox from "../../components/SearchBox";
 
 function ArticlesPage() {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ function ArticlesPage() {
     requestFn: () => getBlogs(), //? bu custom hook api ucun set , loading ,data verir hamisini
   });
 
-  const [search, setSearch] = useState("");
+  
 
   //? bu kodlarin evezine custom hook yaratdim ve yuxarida cagirdim
   // const [data, setData] = useState();
@@ -45,7 +46,7 @@ function ArticlesPage() {
       <Header />
       <Box px={50}>
         <NavigationShow />
-       
+        <SearchBox />
       </Box>
       {loading ? (
         <Loading />
