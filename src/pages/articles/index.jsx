@@ -41,12 +41,16 @@ function ArticlesPage() {
 
   console.log("data", data);
 
+  const handleSearch = (text)=>{
+console.log("text", text);
+  }
+
   return (
     <>
       <Header />
       <Box px={50}>
         <NavigationShow />
-        <SearchBox />
+        <SearchBox onSearch={handleSearch} />
       </Box>
       {loading ? (
         <Loading />
