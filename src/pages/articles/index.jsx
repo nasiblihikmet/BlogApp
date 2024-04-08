@@ -12,13 +12,17 @@ import SearchBox from "../../components/SearchBox";
 function ArticlesPage() {
   const navigate = useNavigate();
 
+  const [searchData, setSearchData] = useState();
+
   const { data, loading } = useFetchData({
     requestFn: () => getBlogs(), //? bu custom hook api ucun set , loading ,data verir hamisini
   });
 
-  
+  useEffect(() => {
+    setSearchData(data);
+  }, [data]);
 
-  //? bu kodlarin evezine custom hook yaratdim ve yuxarida cagirdim
+  //? bu kodlarin evezine custom hook yaratdim ve yuxarida cagirdim usefetchdata
   // const [data, setData] = useState();
   // const [loading, setLoading] = useState(false);
   // const [error, setError] = useState();
@@ -41,9 +45,13 @@ function ArticlesPage() {
 
   console.log("data", data);
 
-  const handleSearch = (text)=>{
-console.log("text", text);
-  }
+  const handleSearch = (text) => {
+    const filterData = searchData.filter((item) =>
+      item.title.toLowerCase().includes(text.toLowerCase())
+    );
+    setSearchData(filterData);
+    console.log("text", text);
+  };
 
   return (
     <>
