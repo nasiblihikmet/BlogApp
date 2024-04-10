@@ -1,11 +1,12 @@
 import React from "react";
 
 import Header from "../../../components/Header";
-import { Box, Image, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, Image, SimpleGrid, Text, Button } from "@chakra-ui/react";
 import { useFetchData } from "../../../hooks/useFetchData";
 import { getBlogId } from "../../../services/articles";
 import Loading from "../../../components/Loading";
 import { convertTime } from "../../../utils/convertTime";
+import { AddIcon,MinusIcon } from "@chakra-ui/icons";
 
 function ArticleDetailPage() {
   const { id } = useParams();
@@ -15,6 +16,13 @@ function ArticleDetailPage() {
     requestFn: () => getBlogId(id),
     dependecy: [id],
   });
+
+const isFav = true
+
+
+
+
+
 
   return (
     <>
@@ -48,7 +56,9 @@ function ArticleDetailPage() {
             <Text bgClip="text" fontSize="lg" fontWeight="medium" color="gray">
               {data?.desc}
             </Text>
+            <Button leftIcon={isFav ?<MinusIcon />  : <AddIcon />} colorScheme={isFav ? "red" : "teal"}>{isFav ? "Remove" : "Add" }Favorite</Button>
           </Box>
+        
         </SimpleGrid>
       )}
     </>
