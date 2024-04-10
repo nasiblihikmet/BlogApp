@@ -1,7 +1,7 @@
 import { Box, Input, Button } from "@chakra-ui/react";
 import React, { useState } from "react";
 
-function SearchBox({ onSearch }) {
+function SearchBox({ onFocus,onSearch }) {
   const [search, setSearch] = useState("");
 
   const handleSubmit = () => {
@@ -13,6 +13,7 @@ function SearchBox({ onSearch }) {
       <Input
         value={search}
         placeholder="Search"
+        onFocus={onFocus}
         onChange={(e) => setSearch(e.target.value)}
       />
       <Button colorScheme="teal" onClick={handleSubmit}>

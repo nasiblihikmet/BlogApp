@@ -46,8 +46,14 @@ function ArticlesPage() {
   console.log("data", data);
 
   const handleSearch = (text) => {
+    setSearchData(data);
+    if (!text.trim()) {
+      return;
+    }
+
     const filterData = searchData.filter((item) =>
-      item.title.toLowerCase().includes(text.toLowerCase())
+      // item.title.toLowerCase().includes(text.toLowerCase())
+      new RegExp(text, "i").test(item.title)
     );
     setSearchData(filterData);
     console.log("filterData", filterData);
@@ -58,7 +64,10 @@ function ArticlesPage() {
       <Header />
       <Box px={50}>
         <NavigationShow />
-        <SearchBox onSearch={handleSearch} />
+        <SearchBox
+          onFocus={() => setSearchData(data)}
+          onSearch={handleSearch}
+        />
       </Box>
       {loading ? (
         <Loading />
