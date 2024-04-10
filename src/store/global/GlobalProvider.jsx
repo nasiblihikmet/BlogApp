@@ -30,6 +30,8 @@ function GlobalProvider({ children }) {
     dispatch,
   };
 
+  dispatch({type:"",payload:{}})
+
   return (
     <globalContext.Provider value={value}>{children}</globalContext.Provider>
   );
