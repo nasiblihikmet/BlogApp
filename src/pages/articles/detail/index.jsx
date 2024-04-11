@@ -1,33 +1,36 @@
 import React from "react";
-
+import { Box, Button, Image, SimpleGrid, Text } from "@chakra-ui/react";
 import Header from "../../../components/Header";
-import { Box, Image, SimpleGrid, Text, Button } from "@chakra-ui/react";
-import { useFetchData } from "../../../hooks/useFetchData";
+import { useParams } from "react-router-dom";
 import { getBlogId } from "../../../services/articles";
+
+import { useFetchData } from "../../../hooks/useFetchData";
 import Loading from "../../../components/Loading";
 import { convertTime } from "../../../utils/convertTime";
+
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
 import { useGlobalStore } from "../../../store/global/GlobalProvider";
 import { TYPES } from "../../../store/global/types";
+import NavigationShow from "../../../components/NavigationShow";
+import { useTitle } from "../../../hooks/useTitle";
 
 function ArticleDetailPage() {
   const { id } = useParams();
 
   const { state, dispatch } = useGlobalStore();
 
-  console.log("state", state.favorites);
-
   const { data, loading } = useFetchData({
     requestFn: () => getBlogId(id),
     dependecy: [id],
   });
 
+  useTitle(`${data?.title} | Blog app`);
+
   const isFav = state.favorites.find((item) => item.id == id);
 
-  console.log("isFav", isFav);
-
-  const handleToggleFav = () => {
+  const handleToggleFav = async () => {
     if (isFav) {
+      // await axios({method:"POST",url:"/favorite/add",data:{id}})
       //? remove
       const filterFav = state.favorites.filter((item) => item.id != id);
 
@@ -35,15 +38,15 @@ function ArticleDetailPage() {
       return;
     }
 
-    //?add
-
-    dispatch({ type: TYPES.TOGGLE_FAV, payload: [...state.favorites,data] });
+    // await axios({method:"POST",url:"/favorite/delete",data:{id}})
+    //? add
+    dispatch({ type: TYPES.TOGGLE_FAV, payload: [...state.favorites, data] });
   };
 
   return (
     <>
       <Header />
-
+      <NavigationShow routes={["Articles", data?.title]} />
       {loading ? (
         <Loading />
       ) : (
@@ -58,7 +61,7 @@ function ArticleDetailPage() {
             gap="16px"
           >
             <Text bgClip="text" fontSize="md" fontWeight="medium" color="gray">
-              {convertTime(parseInt(data?.created))}
+              {convertTime(parseInt(data?.time))}
             </Text>
             <Text
               bgClip="text"
@@ -78,7 +81,7 @@ function ArticleDetailPage() {
               colorScheme={isFav ? "red" : "teal"}
               onClick={handleToggleFav}
             >
-              {isFav ? "Remove" : "Add"}Favorite
+              {isFav ? "Remove" : "Add"} Favorite
             </Button>
           </Box>
         </SimpleGrid>

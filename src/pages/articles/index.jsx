@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Box, Input, SimpleGrid, Spinner, Button } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Input,
+  SimpleGrid,
+  Spinner,
+  Text,
+} from "@chakra-ui/react";
 import Header from "../../components/Header";
 import BlogCard from "../../components/BlogCard";
 import NavigationShow from "../../components/NavigationShow";
@@ -8,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { useFetchData } from "../../hooks/useFetchData";
 import Loading from "../../components/Loading";
 import SearchBox from "../../components/SearchBox";
+import { useTitle } from "../../hooks/useTitle";
 
 function ArticlesPage() {
   const navigate = useNavigate();
@@ -15,14 +23,15 @@ function ArticlesPage() {
   const [searchData, setSearchData] = useState();
 
   const { data, loading } = useFetchData({
-    requestFn: () => getBlogs(), //? bu custom hook api ucun set , loading ,data verir hamisini
+    requestFn: () => getBlogs(),
   });
 
   useEffect(() => {
     setSearchData(data);
   }, [data]);
 
-  //? bu kodlarin evezine custom hook yaratdim ve yuxarida cagirdim usefetchdata
+  useTitle(`Articles | Blog app`);
+
   // const [data, setData] = useState();
   // const [loading, setLoading] = useState(false);
   // const [error, setError] = useState();
@@ -31,23 +40,25 @@ function ArticlesPage() {
   //   const fetchData = async () => {
   //     setLoading(true);
   //     try {
-  //       const res = await getBlogs(); //? everything okay
-  //       setData(res.data); //? everything okay
+  //       const res = await getBlogs();
+  //       setData(res.data);
   //     } catch (err) {
   //       setError(err);
   //     } finally {
   //       setLoading(false);
   //     }
   //   };
-
   //   fetchData();
+  //   // (async function(){
+
+  //   // })()
   // }, []);
 
   console.log("data", data);
 
   const handleSearch = (text) => {
-    setSearchData(data);
     if (!text.trim()) {
+      setSearchData(data);
       return;
     }
 
@@ -55,9 +66,12 @@ function ArticlesPage() {
       // item.title.toLowerCase().includes(text.toLowerCase())
       new RegExp(text, "i").test(item.title)
     );
+    // new RegExp(/text/gui)
+
     setSearchData(filterData);
-    console.log("filterData", filterData);
   };
+
+  console.log("searchData", searchData);
 
   return (
     <>
@@ -73,7 +87,7 @@ function ArticlesPage() {
         <Loading />
       ) : (
         <SimpleGrid columns={{ sm: 2 }} p="20" spacing="10">
-          {data
+          {searchData
             ?.filter((item, index) => item.id > 100)
             ?.map((item) => (
               <BlogCard
@@ -82,7 +96,6 @@ function ArticlesPage() {
                 onReadMore={() => navigate("/articles/" + item.id)}
               />
             ))}
-
           {/* <BlogCard />
           <BlogCard /> */}
         </SimpleGrid>
