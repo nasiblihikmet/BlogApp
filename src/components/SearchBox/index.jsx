@@ -1,7 +1,7 @@
-import { Box, Input, Button } from "@chakra-ui/react";
+import { Box, Button, Input } from "@chakra-ui/react";
 import React, { useState } from "react";
 
-function SearchBox({ onFocus,onSearch }) {
+function SearchBox({ onFocus, onSearch }) {
   const [search, setSearch] = useState("");
 
   const handleSubmit = () => {
