@@ -1,4 +1,5 @@
 import React, { createContext, useReducer, useState } from "react";
+import { TYPES } from "./types";
 
 export const globalContext = createContext();
 
@@ -8,9 +9,9 @@ const initialState = {
 
 function reducer(state, action) {
   switch (action.type) {
-    case "TOGGLE_FAV":
+    case TYPES.TOGGLE_FAV:
       //? Your todo for favorites...
-      return;
+      return {...state,favorites: action.payload};
 
     default:
       return state;
