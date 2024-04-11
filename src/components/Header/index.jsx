@@ -48,6 +48,14 @@ function Header() {
           variant="ghost"
           color="white"
           as="li"
+          onClick={() => navigate(ROUTER.FAV)}
+        >
+          Favorites
+        </Button>
+        <Button
+          variant="ghost"
+          color="white"
+          as="li"
           onClick={() => navigate(ROUTER.FAQ)}
         >
           FAQ
