@@ -29,7 +29,7 @@ function ArticleDetailPage() {
   const handleToggleFav = () => {
     if (isFav) {
       //? remove
-      const filterFav = state.favorites.filter((item) => item.id !== id);
+      const filterFav = state.favorites.filter((item) => item.id != id);
 
       dispatch({ type: TYPES.TOGGLE_FAV, payload: filterFav });
       return;
