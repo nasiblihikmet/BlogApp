@@ -6,10 +6,13 @@ import { useFetchData } from "../../../hooks/useFetchData";
 import { getBlogId } from "../../../services/articles";
 import Loading from "../../../components/Loading";
 import { convertTime } from "../../../utils/convertTime";
-import { AddIcon,MinusIcon } from "@chakra-ui/icons";
+import { AddIcon, MinusIcon } from "@chakra-ui/icons";
 
 function ArticleDetailPage() {
   const { id } = useParams();
+
+ 
+
   console.log("a", id);
 
   const { data, loading } = useFetchData({
@@ -17,12 +20,7 @@ function ArticleDetailPage() {
     dependecy: [id],
   });
 
-const isFav = true
-
-
-
-
-
+  const isFav = true;
 
   return (
     <>
@@ -47,7 +45,7 @@ const isFav = true
             <Text
               bgClip="text"
               fontSize="2xl"
-              fontWeight="extrabold"
+              fontWeight="extrabold" 
               color="black"
             >
               {data?.title}
@@ -56,9 +54,14 @@ const isFav = true
             <Text bgClip="text" fontSize="lg" fontWeight="medium" color="gray">
               {data?.desc}
             </Text>
-            <Button leftIcon={isFav ?<MinusIcon />  : <AddIcon />} colorScheme={isFav ? "red" : "teal"}>{isFav ? "Remove" : "Add" }Favorite</Button>
+            <Button
+            alignSelf="flex-start"
+              leftIcon={isFav ? <MinusIcon /> : <AddIcon />}
+              colorScheme={isFav ? "red" : "teal"}
+            >
+              {isFav ? "Remove" : "Add"}Favorite
+            </Button>
           </Box>
-        
         </SimpleGrid>
       )}
     </>
