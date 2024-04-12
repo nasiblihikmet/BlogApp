@@ -32,8 +32,3 @@ export const useFetchData = ({
 
   return { data, loading, error, setData };
 };
-
-
-// const { data, loading } = useFetchData({
-//     requestFn: () => getBlogs(), //? bu custom hook api ucun set , loading ,data verir hamisini
-//   });  //? bashqa sehifelerde bu formada cagirilir
